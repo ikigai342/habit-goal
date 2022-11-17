@@ -1,0 +1,30 @@
+.goal-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-card {
+  margin: 36px 36px 0 36px;
+}
+
+mat-card-actions,  mat-card-content {
+  margin-bottom: 0px;
+}
+
+mat-card-title, mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0 0 0 ;
+}
+
+.add-goal {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px 36px 0px 0px;
+}
+
+
+
+

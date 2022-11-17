@@ -1,0 +1,39 @@
+.goal-container {
+  padding: 16px 16px 0 16px;
+}
+
+mat-list {
+  width: 100%;
+}
+
+mat-list .dlt {
+  position: absolute;
+  right: 0;
+}
+
+.risk-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+mat-card-actions,  mat-card-content {
+  margin-bottom: 0px;
+}
+
+mat-card {
+  margin: 0px 20px 0 20px;
+}
+
+mat-card-title, mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-button {
+  display: flex;
+  justify-content: start;
+  padding-left: 4px;
+}
+

@@ -1,0 +1,15 @@
+<div>
+  <button *ngIf="!canAdd" mat-icon-button (click)="canAdd ? addValue() : prepareForAdd()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <mat-form-field *ngIf="canAdd">
+    <mat-label>test</mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    <button color="warn" matSuffix mat-icon-button (click)="value=''; canAdd ? addValue() : prepareForAdd()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+

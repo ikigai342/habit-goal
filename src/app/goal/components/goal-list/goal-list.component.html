@@ -1,0 +1,32 @@
+<div class="goal-container">
+  <mat-card
+    *ngFor="let goal of goalList; index as i"
+    [ngStyle]="{'background-color': getColor(goal.goalType)}"
+  >
+    <mat-card-title>
+      Goal {{i + 1}}: {{goal.name}}
+      <span></span>
+        {{goal.score}}/{{goal.maxScore}}
+    </mat-card-title>
+    <div class="hover-container">
+      <mat-card-content>
+        <p>
+          {{goal.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button routerLink="/goals/goal/{{goal.id}}">Show more</button>
+        <app-delete-button (delete)="deleteGoal(goal.id)"></app-delete-button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+  <div class="add-goal">
+    <button (click)="openAddGoalDialog()"  mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+</div>
+
+
+

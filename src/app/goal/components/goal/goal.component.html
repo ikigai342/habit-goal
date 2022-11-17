@@ -1,0 +1,42 @@
+<div class="goal-container">
+  <button routerLink="/goals" style="margin-bottom: 12px;" mat-button>
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <mat-card [ngStyle]="{'background-color': getColor(selectedGoal.goalType)}">
+    <mat-card-title>
+       Goal: {{selectedGoal.name}}
+      <div>
+        score: {{selectedGoal.score}}/{{selectedGoal.maxScore}}
+      </div>
+
+    </mat-card-title>
+    <div>
+      <mat-card-content>
+        <p>
+          {{selectedGoal.description}}
+        </p>
+        <div class="risk-container">
+          <mat-list>
+              <h3 mat-subheader>What do I achieve</h3>
+              <mat-list-item *ngFor="let achieve of achievements">
+                  {{achieve}} <app-delete-button class="dlt" (delete)="handleDelete()"></app-delete-button>
+              </mat-list-item>
+              <app-add-button class="add-button"></app-add-button>
+          </mat-list>
+          <mat-list>
+            <h3 mat-subheader>What do I sacrifice</h3>
+            <mat-list-item *ngFor="let sacrifice of sacrifices">
+              {{sacrifice}} <app-delete-button class="dlt" (delete)="handleDelete()"></app-delete-button>
+            </mat-list-item>
+            <app-add-button class="add-button"></app-add-button>
+          </mat-list>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>
+<app-goal-journal></app-goal-journal>
+

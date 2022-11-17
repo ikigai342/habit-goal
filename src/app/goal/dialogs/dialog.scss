@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-group {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}

@@ -1,0 +1,93 @@
+<form [formGroup]="goalForm" class="form">
+  <h1 mat-dialog-title>Goal</h1>
+  <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Goal Name:</mat-label>
+        <input matInput type="text" formControlName="name">
+        <button
+          *ngIf="data.name"
+          matSuffix mat-icon-button
+          aria-label="Clear"
+          (click)="data.name=''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Goal Description:</mat-label>
+        <input matInput type="text" formControlName="description">
+        <button
+          *ngIf="data.description"
+          matSuffix mat-icon-button
+          aria-label="Clear"
+          (click)="data.description=''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Achievements:</mat-label>
+       <input matInput type="text"
+                 [matChipInputFor]="achieveList"
+                 [matChipInputAddOnBlur]="true"
+                 (matChipInputTokenEnd)="addAchievment($event)">
+
+      <mat-chip-list #achieveList formControlName="achievements">
+        <mat-chip *ngFor="let achievement of achievements" (removed)="removeAchievment(achievement)">
+          {{achievement}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Sacrifices:</mat-label>
+     <input matInput type="text"
+               [matChipInputFor]="sacrificeList"
+               [matChipInputAddOnBlur]="true"
+               (matChipInputTokenEnd)="addSacrifice($event)">
+
+    <mat-chip-list #sacrificeList formControlName="sacrifices">
+      <mat-chip *ngFor="let sacrifice of sacrifices" (removed)="removeSacrifice(sacrifice)">
+        {{sacrifice}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Goal Max Score:</mat-label>
+        <input
+          matInput type="number"
+          placeholder="0"
+          formControlName="maxScore"
+        >
+        <button
+          *ngIf="data.maxScore"
+          matSuffix mat-icon-button
+          aria-label="Clear"
+          (click)="data.maxScore=0"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+      <div class="toggle-group">
+        <mat-button-toggle-group
+          [(ngModel)]="data.goalType"
+          [ngModelOptions]="{standalone: true}"
+          >
+          <mat-button-toggle value=0>Health</mat-button-toggle>
+          <mat-button-toggle value=1>Work</mat-button-toggle>
+          <mat-button-toggle value=2>Life</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+   <div mat-dialog-actions>
+      <button mat-stroked-button (click)="onNoClick()">Cancel</button>
+      <button mat-stroked-button (click)="onClick()" [mat-dialog-close]="data">Create</button>
+    </div>
+</form>
+
+
