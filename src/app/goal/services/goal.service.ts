@@ -35,4 +35,10 @@ export class GoalService {
       `${environment.goalHabitAPI}${this.goalUrl}`,data
     );
   }
+
+  public updateGoal(data: GoalSelected, id: string): Observable<GoalSelected> {
+    return this.http.put<GoalSelected>(
+      `${environment.goalHabitAPI}${this.goalUrl}/${id}`,data
+    );
+  }
 }

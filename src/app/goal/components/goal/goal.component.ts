@@ -11,9 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 export class GoalComponent implements OnInit {
   goalId: any;
   selectedGoal: GoalSelected = {name:'',description:'',achievements:'',sacrifices:'',score:0,maxScore:0,goalType:0};
-  achievements?: string[];
-  sacrifices?: string[];
+  achievements: string[] = [];
+  sacrifices: string[] = [];
   color: string = "";
+  value: string = "";
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -48,6 +49,58 @@ export class GoalComponent implements OnInit {
         break;
     }
     return this.color;
+  }
+
+  deleteAchievement(index: number) {
+    if (index > -1) {
+      this.achievements.splice(index, 1);
+   }
+    this.selectedGoal.achievements = this.achievements.toString();
+    this.goalService.updateGoal(this.selectedGoal, this.goalId).subscribe(data => {
+      this.selectedGoal = data;
+      this.achievements = data.achievements.split(',');
+      this.sacrifices = data.sacrifices.split(',');
+      console.log(data);
+    });
+  }
+
+  deleteSacrifice(index: number) {
+    if (index > -1) {
+      this.sacrifices.splice(index, 1);
+   }
+    this.selectedGoal.sacrifices = this.sacrifices.toString();
+    this.goalService.updateGoal(this.selectedGoal, this.goalId).subscribe(data => {
+      this.selectedGoal = data;
+      this.achievements = data.achievements.split(',');
+      this.sacrifices = data.sacrifices.split(',');
+      console.log(data);
+    });
+  }
+
+  addAchievement() {
+    this.achievements.push(this.value);
+    this.selectedGoal.achievements = this.achievements.toString();
+    this.goalService.updateGoal(this.selectedGoal, this.goalId).subscribe(data => {
+      this.selectedGoal = data;
+      this.achievements = data.achievements.split(',');
+      this.sacrifices = data.sacrifices.split(',');
+      console.log(data);
+    });
+  }
+
+  addSacrifice() {
+    this.sacrifices.push(this.value);
+    this.selectedGoal.sacrifices = this.sacrifices.toString();
+    this.goalService.updateGoal(this.selectedGoal, this.goalId).subscribe(data => {
+      this.selectedGoal = data;
+      this.achievements = data.achievements.split(',');
+      this.sacrifices = data.sacrifices.split(',');
+      console.log(data);
+    });
+  }
+
+  setVal(event: string) {
+    this.value = event;
   }
 
 }

@@ -19,17 +19,17 @@
         <div class="risk-container">
           <mat-list>
               <h3 mat-subheader>What do I achieve</h3>
-              <mat-list-item *ngFor="let achieve of achievements">
-                  {{achieve}} <app-delete-button class="dlt" (delete)="handleDelete()"></app-delete-button>
+              <mat-list-item *ngFor="let achieve of achievements; let i = index">
+                  {{achieve}} <app-delete-button class="dlt" (delete)="deleteAchievement(i)"></app-delete-button>
               </mat-list-item>
-              <app-add-button class="add-button"></app-add-button>
+              <app-add-button (valueAdd)="setVal($event)" (add)="addAchievement()" class="add-button"></app-add-button>
           </mat-list>
           <mat-list>
             <h3 mat-subheader>What do I sacrifice</h3>
-            <mat-list-item *ngFor="let sacrifice of sacrifices">
-              {{sacrifice}} <app-delete-button class="dlt" (delete)="handleDelete()"></app-delete-button>
+            <mat-list-item *ngFor="let sacrifice of sacrifices; let i = index">
+              {{sacrifice}} <app-delete-button class="dlt" (delete)="deleteSacrifice(i)"></app-delete-button>
             </mat-list-item>
-            <app-add-button class="add-button"></app-add-button>
+            <app-add-button (valueAdd)="setVal($event)" (add)="addSacrifice()" class="add-button"></app-add-button>
           </mat-list>
         </div>
       </mat-card-content>
